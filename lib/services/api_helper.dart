@@ -9,7 +9,7 @@ import 'package:weather_application/utils/logging.dart';
 
 @immutable
 class ApiHelper {
-  static const baseURL = 'https://api.openweathermap.org/data/4.0';
+  static const baseURL = 'https://api.openweathermap.org/data/2.5';
   static const weeklyWeatherUrl =
       'https://api.open-meteo.com/v1/forecast?current=&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto';
   static double lat = 0.0;
