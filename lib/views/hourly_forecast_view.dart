@@ -6,6 +6,7 @@ import 'package:weather_application/extensions/int.dart';
 import 'package:weather_application/providers/hourly_weather_provider.dart';
 import 'package:weather_application/skeletons/hourly_forecast_skeleton.dart';
 import 'package:weather_application/utils/get_weather_icons.dart';
+import 'package:weather_application/views/error_view.dart';
 
 class HourlyForecastView extends ConsumerWidget {
   const HourlyForecastView({super.key});
@@ -33,8 +34,14 @@ class HourlyForecastView extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) =>
-          const Center(child: Text('Could not load hourly forecast')),
+      error: (error, stackTrace) => SizedBox(
+        height: 100,
+        child: ErrorView.retry(
+          message: 'Could not load hourly forecast',
+          compact: true,
+          onRetry: () => ref.invalidate(hourlyWeatherProvider),
+        ),
+      ),
       loading: () => HourlyForecastSkeleton(),
     );
   }

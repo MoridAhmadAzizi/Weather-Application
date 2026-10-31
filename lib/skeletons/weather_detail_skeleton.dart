@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:weather_application/constants/app_colors.dart';
 import 'package:weather_application/constants/text_styles.dart';
-import 'package:weather_application/skeletons/hourly_forecast_skeleton.dart';
 import 'package:weather_application/views/gradient_container.dart';
 import 'package:weather_application/views/weather_info.dart';
 

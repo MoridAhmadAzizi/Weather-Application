@@ -5,6 +5,7 @@ import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/providers/get_weather_by_city_provider.dart';
 import 'package:weather_application/skeletons/famous_cities_skeleton.dart';
 import 'package:weather_application/utils/get_weather_icons.dart';
+import 'package:weather_application/views/error_view.dart';
 
 class FamousCityTile extends ConsumerWidget {
   const FamousCityTile({super.key, required this.city, required this.index});
@@ -34,7 +35,7 @@ class FamousCityTile extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                           '${weather.main.temp.round().toString()}\u00B0',
+                            '${weather.main.temp.round().toString()}\u00B0',
                             style: TextStyles.h2,
                           ),
                           SizedBox(height: 10),
@@ -66,7 +67,15 @@ class FamousCityTile extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => Center(child: Text(error.toString())),
+      error: (error, stackTrace) => Material(
+        color: AppColors.accentBlue,
+        borderRadius: BorderRadius.circular(10),
+        child: ErrorView.retry(
+          message: 'Failed to load',
+          compact: true,
+          onRetry: () => ref.invalidate(getWeatherByCityProvider(city)),
+        ),
+      ),
       loading: () => FamousCitiesSkeleton(),
     );
   }
