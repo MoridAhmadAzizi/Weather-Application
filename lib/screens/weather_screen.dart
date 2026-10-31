@@ -20,7 +20,7 @@ class WeatherScreen extends ConsumerWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(width: double.infinity),
+                
                 Text(weather.name, style: TextStyles.h1),
                 SizedBox(height: 20),
                 Text(DateTime.now().dateTime, style: TextStyles.subtitleText),
