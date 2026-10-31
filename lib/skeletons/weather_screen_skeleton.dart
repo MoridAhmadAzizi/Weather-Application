@@ -44,7 +44,6 @@ class WeatherScreenSkeleton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Today', style: TextStyles.h2),
-              TextButton(onPressed: () {}, child: Text('View full forecast')),
             ],
           ),
           const SizedBox(height: 15),

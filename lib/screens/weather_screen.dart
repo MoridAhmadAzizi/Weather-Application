@@ -41,10 +41,9 @@ class WeatherScreen extends ConsumerWidget {
             SizedBox(height: 40),
             // View Hourly
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text('Today', style: TextStyles.h2),
-                TextButton(onPressed: () {}, child: Text('View full forecast')),
               ],
             ),
             SizedBox(height: 15),
