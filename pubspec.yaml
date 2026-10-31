@@ -38,6 +38,7 @@ dependencies:
   geolocator: ^14.1.2
   dio: ^5.11.1
   flutter_riverpod: ^3.3.2
+  skeletonizer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

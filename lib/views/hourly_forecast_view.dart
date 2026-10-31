@@ -4,6 +4,7 @@ import 'package:weather_application/constants/app_colors.dart';
 import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/extensions/int.dart';
 import 'package:weather_application/providers/hourly_weather_provider.dart';
+import 'package:weather_application/skeletons/hourly_forecast_skeleton.dart';
 import 'package:weather_application/utils/get_weather_icons.dart';
 
 class HourlyForecastView extends ConsumerWidget {
@@ -34,7 +35,7 @@ class HourlyForecastView extends ConsumerWidget {
       },
       error: (error, stackTrace) =>
           const Center(child: Text('Could not load hourly forecast')),
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => HourlyForecastSkeleton(),
     );
   }
 }
@@ -59,7 +60,7 @@ class HourlyForecastTile extends StatelessWidget {
       padding: const EdgeInsets.only(right: 16, top: 12, bottom: 12),
       child: Material(
         color: isActive ? AppColors.lightBlue : AppColors.accentBlue,
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(10.0),
         elevation: isActive ? 8 : 0,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

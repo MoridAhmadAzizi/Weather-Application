@@ -4,6 +4,7 @@ import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/extensions/datetime.dart';
 import 'package:weather_application/extensions/strings.dart';
 import 'package:weather_application/providers/get_weather_by_city_provider.dart';
+import 'package:weather_application/skeletons/weather_detail_skeleton.dart';
 import 'package:weather_application/views/gradient_container.dart';
 import 'package:weather_application/views/weather_info.dart';
 
@@ -47,7 +48,7 @@ class WeatherDetailScreen extends ConsumerWidget {
           );
         },
         error: (error, stackTrace) => Center(child: Text(error.toString())),
-        loading: () => Center(child: CircularProgressIndicator()),
+        loading: () => Center(child: WeatherDetailSkeleton()),
       ),
     );
   }

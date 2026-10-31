@@ -31,11 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
-  final _screens = [
-    WeatherScreen(),
-    SearchScreen(),
-    ForecastScreen(),
-  ];
+  final _screens = [WeatherScreen(), SearchScreen(), ForecastScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

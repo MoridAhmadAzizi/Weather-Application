@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_application/constants/app_colors.dart';
 import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/providers/get_weather_by_city_provider.dart';
+import 'package:weather_application/skeletons/famous_cities_skeleton.dart';
 import 'package:weather_application/utils/get_weather_icons.dart';
 
 class FamousCityTile extends ConsumerWidget {
@@ -19,7 +20,7 @@ class FamousCityTile extends ConsumerWidget {
         return Material(
           color: index == 0 ? AppColors.lightBlue : AppColors.accentBlue,
           elevation: index == 0 ? 8 : 0,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
             child: Column(
@@ -66,7 +67,7 @@ class FamousCityTile extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) => Center(child: Text(error.toString())),
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => FamousCitiesSkeleton(),
     );
   }
 }

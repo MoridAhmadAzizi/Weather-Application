@@ -4,6 +4,7 @@ import 'package:weather_application/constants/app_colors.dart';
 import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/extensions/datetime.dart';
 import 'package:weather_application/providers/weekly_weather_provider.dart';
+import 'package:weather_application/skeletons/weekly_forecast_skeleton.dart';
 import 'package:weather_application/utils/get_weather_icons.dart';
 import 'package:weather_application/widgets/subscript_text.dart';
 
@@ -37,7 +38,7 @@ class WeeklyForecastView extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) => Center(child: Text(error.toString())),
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => WeeklyForecastSkeleton(),
     );
   }
 }
@@ -62,7 +63,7 @@ class WeeklyWeatherTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       margin: EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         color: AppColors.accentBlue,
       ),
       child: Row(

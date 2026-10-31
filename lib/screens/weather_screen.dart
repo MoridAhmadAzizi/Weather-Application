@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/extensions/datetime.dart';
 import 'package:weather_application/providers/current_weather_provider.dart';
+import 'package:weather_application/skeletons/weather_screen_skeleton.dart';
 import 'package:weather_application/views/gradient_container.dart';
 import 'package:weather_application/views/hourly_forecast_view.dart';
 import 'package:weather_application/views/weather_info.dart';
@@ -52,7 +53,7 @@ class WeatherScreen extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) => Center(child: Text(error.toString())),
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => WeatherScreenSkeleton(),
     );
   }
 }

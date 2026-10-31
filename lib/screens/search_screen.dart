@@ -4,6 +4,7 @@ import 'package:weather_application/constants/app_colors.dart';
 import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/providers/get_weather_by_city_provider.dart';
 import 'package:weather_application/screens/weather_detail_screen.dart';
+import 'package:weather_application/skeletons/famous_cities_skeleton.dart';
 import 'package:weather_application/views/famous_cities_view.dart';
 import 'package:weather_application/views/gradient_container.dart';
 import 'package:weather_application/widgets/famous_city_tile.dart';
@@ -104,7 +105,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final weatherAsync = ref.watch(getWeatherByCityProvider(_searchedCity));
 
     return weatherAsync.when(
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const Center(child: FamousCitiesSkeleton()),
       error: (error, stack) => Column(
         children: [
           Text('City not Found', style: TextStyles.h1),
