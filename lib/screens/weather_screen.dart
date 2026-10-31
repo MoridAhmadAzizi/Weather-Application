@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_application/constants/text_styles.dart';
 import 'package:weather_application/extensions/datetime.dart';
 import 'package:weather_application/providers/current_weather_provider.dart';
+import 'package:weather_application/skeletons/weather_screen_skeleton.dart';
+import 'package:weather_application/views/error_view.dart';
 import 'package:weather_application/views/gradient_container.dart';
 import 'package:weather_application/views/hourly_forecast_view.dart';
 import 'package:weather_application/views/weather_info.dart';
@@ -20,7 +22,6 @@ class WeatherScreen extends ConsumerWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(width: double.infinity),
                 Text(weather.name, style: TextStyles.h1),
                 SizedBox(height: 20),
                 Text(DateTime.now().dateTime, style: TextStyles.subtitleText),
@@ -40,19 +41,25 @@ class WeatherScreen extends ConsumerWidget {
             SizedBox(height: 40),
             // View Hourly
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Today', style: TextStyles.h2),
-                TextButton(onPressed: () {}, child: Text('View full forecast')),
-              ],
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [Text('Today', style: TextStyles.h2)],
             ),
             SizedBox(height: 15),
             HourlyForecastView(),
           ],
         );
       },
-      error: (error, stackTrace) => Center(child: Text(error.toString())),
-      loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => GradientContainer(
+        children: [
+          const SizedBox(height: 120),
+          ErrorView.retry(
+            message: 'Could not load the weather',
+            // invalidate = ask the provider to load again
+            onRetry: () => ref.invalidate(currentWeatherProvider),
+          ),
+        ],
+      ),
+      loading: () => WeatherScreenSkeleton(),
     );
   }
 }
