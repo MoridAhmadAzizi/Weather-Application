@@ -28,18 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
       selectedIcon: Icon(Icons.wb_sunny, color: AppColors.white),
       label: '',
     ),
-    NavigationDestination(
-      icon: Icon(Icons.settings_outlined, color: AppColors.white),
-      selectedIcon: Icon(Icons.settings, color: AppColors.white),
-      label: '',
-    ),
   ];
 
   final _screens = [
     WeatherScreen(),
     SearchScreen(),
     Center(child: Text('Weather Screen')),
-    Center(child: Text('Settings Screen')),
   ];
   @override
   Widget build(BuildContext context) {

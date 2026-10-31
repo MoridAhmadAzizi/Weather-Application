@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:weather_application/constants/app_colors.dart';
 
 class RoundTextField extends StatelessWidget {
-  const RoundTextField({super.key, required this.controller});
+  const RoundTextField({
+    super.key,
+    required this.controller,
+    this.onSubmitted,
+    this.focusNode,
+  });
 
   final TextEditingController controller;
+  final ValueChanged<String>? onSubmitted;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +23,9 @@ class RoundTextField extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
+        focusNode: focusNode, 
+        onSubmitted: onSubmitted, 
+        textInputAction: TextInputAction.search,
         style: TextStyle(color: AppColors.white),
         decoration: InputDecoration(
           border: InputBorder.none,

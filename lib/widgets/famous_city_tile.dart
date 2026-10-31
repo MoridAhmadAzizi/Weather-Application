@@ -19,7 +19,7 @@ class FamousCityTile extends ConsumerWidget {
         return Material(
           color: index == 0 ? AppColors.lightBlue : AppColors.accentBlue,
           elevation: index == 0 ? 8 : 0,
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(12),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
             child: Column(
